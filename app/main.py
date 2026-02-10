@@ -25,9 +25,11 @@ def main():
                 for path in paths:
                     if os.access(path + f"/{command_strip}", os.X_OK):
                         print(f"{command_strip} is {path}/{command_strip}")
-                    else:
+                        found = True
                         break
 
+                if not found:
+                    print(f"{command_strip}: not found")
             else:
                 print(f"{words[1]}: not found")
         else:
