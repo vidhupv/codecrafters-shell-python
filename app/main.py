@@ -44,6 +44,7 @@ def main():
                     if os.path.isfile and os.access(
                         path + f"/{shell_command}", os.X_OK
                     ):
+                        full_path = os.path.join(path, shell_command)
                         result = subprocess.run([shell_command, command_strip])
                 else:
                     print(f"{command}: command not found")
