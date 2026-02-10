@@ -13,7 +13,6 @@ def main():
         if words[0] == "echo":
             message = " ".join(words[1:])
             print(message)
-
         else:
             print(f"{command}: command not found")
 
