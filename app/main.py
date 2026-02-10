@@ -45,7 +45,7 @@ def main():
                         path + f"/{shell_command}", os.X_OK
                     ):
                         full_path = os.path.join(path, shell_command)
-                        result = subprocess.run([shell_command, command_strip])
+                        result = subprocess.run([full_path, words[1:]])
                 else:
                     print(f"{command}: command not found")
 
