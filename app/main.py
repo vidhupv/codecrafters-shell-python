@@ -7,9 +7,15 @@ def main():
     while True:
         sys.stdout.write("$ ")
         command = input()
+        words = command.split()
         if command == "exit":
             break
-        print(f"{command}: command not found")
+        if words[0] == "echo":
+            message = " ".join(words[1:])
+            print(message)
+
+        else:
+            print(f"{command}: command not found")
 
 
 if __name__ == "__main__":
