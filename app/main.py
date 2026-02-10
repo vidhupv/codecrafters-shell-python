@@ -7,12 +7,18 @@ def main():
     while True:
         sys.stdout.write("$ ")
         command = input()
+        builtin = ["exit", "echo", "type"]
         words = command.split()
         if command == "exit":
             break
         if words[0] == "echo":
             message = " ".join(words[1:])
             print(message)
+        if words[0] == "type":
+            if words[1] in builtin:
+                print(f"{words[1]} is a shell builtin")
+            else:
+                print(f"{words[1]}: not found")
         else:
             print(f"{command}: command not found")
 
