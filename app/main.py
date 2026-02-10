@@ -11,10 +11,10 @@ def main():
         words = command.split()
         if command == "exit":
             break
-        if words[0] == "echo":
+        elif words[0] == "echo":
             message = " ".join(words[1:])
             print(message)
-        if words[0] == "type":
+        elif words[0] == "type":
             if words[1] in builtin:
                 print(f"{words[1]} is a shell builtin")
             else:
