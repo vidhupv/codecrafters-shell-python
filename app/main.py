@@ -41,11 +41,11 @@ def main():
             if path_string:
                 paths = path_string.split(os.pathsep)
                 for path in paths:
-                    if os.path.isfile and os.access(
+                    if os.path.isfile(shell_command) and os.access(
                         path + f"/{shell_command}", os.X_OK
                     ):
                         full_path = os.path.join(path, shell_command)
-                        result = subprocess.run([full_path, words[1:]])
+                        result = subprocess.run([full_path, words[]])
                 else:
                     print(f"{command}: command not found")
 
