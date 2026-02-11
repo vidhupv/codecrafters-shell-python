@@ -48,8 +48,8 @@ def main():
                         subprocess.run(words)
                         found = True
                         break
-                    if not found:
-                        print(f"{shell_command}: command not found")
+                if not found:
+                    print(f"{shell_command}: command not found")
                 # for path in paths:
                 #     if os.path.isfile(shell_command) and os.access(
                 #         path + f"/{shell_command}", os.X_OK
