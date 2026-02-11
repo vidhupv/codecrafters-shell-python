@@ -1,6 +1,7 @@
 import os
 import subprocess
 import sys
+from posix import X_OK
 from posixpath import isfile
 
 
@@ -40,14 +41,23 @@ def main():
         else:
             if path_string:
                 paths = path_string.split(os.pathsep)
+                found = False
                 for path in paths:
-                    if os.path.isfile(shell_command) and os.access(
-                        path + f"/{shell_command}", os.X_OK
-                    ):
-                        full_path = os.path.join(path, shell_command)
-                        result = subprocess.run([full_path, words[]])
-                else:
-                    print(f"{command}: command not found")
+                    full_path = os.path.join(path, shell_command)
+                    if os.path.isfile(full_path) and os.access(full_path, os.X_OK):
+                        subprocess.run(words)
+                        found = True
+                        break
+                    if not found:
+                        print(f"{shell_command}: command not found")
+                # for path in paths:
+                #     if os.path.isfile(shell_command) and os.access(
+                #         path + f"/{shell_command}", os.X_OK
+                #     ):
+                #         full_path = os.path.join(path, shell_command)
+                #         result = subprocess.run([full_path, words[]])
+                # else:
+                #     print(f"{command}: command not found")
 
 
 if __name__ == "__main__":
